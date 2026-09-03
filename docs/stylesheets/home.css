@@ -337,6 +337,13 @@ html:not(.has-home-page) body[data-md-color-scheme="default"] .md-main__inner {
   transform: translateY(.35rem);
 }
 
+@media screen and (min-width: 60em) {
+  .has-home-page .md-sidebar--primary,
+  .has-home-page .md-sidebar--secondary {
+    display: none;
+  }
+}
+
 @supports not ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .home-glass {
     background: rgba(42, 62, 56, .88);

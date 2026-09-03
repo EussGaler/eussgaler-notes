@@ -102,6 +102,10 @@ def run(built=False):
     if len(list((DOCS/'courses/system-modeling/assets').glob('fig-*.png'))) != 4: issues.append('Expected four final figures')
     for p in DOCS.rglob('*'):
         if p.is_file() and any(x in p.parts for x in ['pic','参考裁图','待审插图','.git']): issues.append('Private source in public docs: '+str(p))
+    if built:
+        home = SITE / 'index.html'
+        if home.is_file() and 'md-sidebar md-sidebar--primary' not in home.read_text('utf-8'):
+            issues.append('Homepage is missing the mobile navigation drawer')
     report={'ok':not issues,'issues':issues,'pages':stats}
     print(json.dumps(report,ensure_ascii=False,indent=2))
     return 0 if not issues else 1
