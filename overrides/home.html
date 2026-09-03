@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  <script>document.documentElement.classList.add("has-home-page")</script>
+{% endblock %}
+
+{% block site_nav %}{% endblock %}
+
+{% block container %}
+  <div class="home-backdrop" aria-hidden="true"></div>
+  <canvas class="home-rain" aria-hidden="true"></canvas>
+
+  <div class="home-shell">
+    <section class="home-glass home-glass--main" aria-labelledby="home-title">
+      <img
+        class="home-avatar"
+        src="{{ 'assets/home/avatar.jpg' | url }}"
+        alt="EussGaler 的头像"
+        width="144"
+        height="144"
+      >
+
+      <div class="home-intro">
+        <h1 id="home-title">EussGaler's Notes</h1>
+        <h2 class="home-section-title home-section-title--intro">收集日常的碎片</h2>
+        <div class="home-summary">
+          <p class="home-summary__text">在过去不断探寻的旅途中，我总是想用自己的双手创造些什么，留下些什么。“去过和别人一样的生活，但也不要被埋没了，坚强地活下去”，被打动的内心大概已无迹可寻，如今看来又是如此遥不可及。但比起细数那些失去的和尚未得到的，细数拥有的和曾经拥有的，或许是更明智且有趣的选择。</p>
+          <p class="home-summary__signature">2026.9</p>
+        </div>
+      </div>
+
+      <h2 class="home-section-title home-section-title--links">友情链接</h2>
+      <nav class="home-socials" aria-label="个人主页">
+        <a class="home-social" href="https://github.com/EussGaler" target="_blank" rel="noopener noreferrer">
+          <strong>GitHub</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="home-social" href="https://space.bilibili.com/222999797" target="_blank" rel="noopener noreferrer">
+          <strong>bilibili</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+
+        <a class="home-social" href="https://bgm.tv/user/eussgaler" target="_blank" rel="noopener noreferrer">
+          <strong>Bangumi</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </section>
+
+    <aside class="home-glass home-glass--aside" aria-label="随记">
+      <span class="home-aside__dot" aria-hidden="true"></span>
+      <p class="home-rotating-text" aria-live="polite">我们的头脑比天空更辽阔。</p>
+    </aside>
+  </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}

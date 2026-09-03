@@ -1,0 +1,68 @@
+[project]
+site_name = "EussGaler's Notes"
+site_description = "控制、建模与数学基础的课程笔记"
+site_author = "EussGaler"
+site_url = "https://eussgaler.github.io/eussgaler-notes/"
+docs_dir = "docs"
+site_dir = "site"
+use_directory_urls = true
+extra_css = ["stylesheets/notes.css", "stylesheets/home.css"]
+extra_javascript = ["javascripts/mathjax.js", "vendor/mathjax/tex-mml-chtml.js", "javascripts/figures.js", "javascripts/home.js"]
+nav = [
+  { "首页" = "index.md" },
+  { "课程笔记" = [
+    "courses/index.md",
+    { "控制理论中的代数基础" = [
+      "courses/algebra-for-control/index.md",
+      { "01 · 线性代数基础" = "courses/algebra-for-control/linear-algebra.md" },
+      { "02 · 线性变换与商空间" = "courses/algebra-for-control/linear-maps.md" },
+      { "03 · 内积空间与正交投影" = "courses/algebra-for-control/inner-products.md" },
+    ] },
+    { "系统建模与仿真" = [
+      "courses/system-modeling/index.md",
+      { "01 · 系统建模概述" = "courses/system-modeling/overview.md" },
+      { "02 · 经典辨识" = "courses/system-modeling/classical-identification.md" },
+      { "03 · 最小二乘法辨识" = "courses/system-modeling/least-squares.md" },
+      { "04 · 极大似然辨识" = "courses/system-modeling/maximum-likelihood.md" },
+      { "05 · 连续系统仿真数值方法" = "courses/system-modeling/numerical-methods.md" },
+      { "06 · 一级倒立摆建模与 LQR 控制" = "courses/system-modeling/pendulum-lqr.md" },
+    ] },
+  ] },
+]
+
+[project.theme]
+custom_dir = "overrides"
+variant = "modern"
+language = "zh"
+font = false
+features = ["navigation.tabs", "navigation.indexes", "navigation.path", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy"]
+
+[project.extra]
+generator = false
+
+[[project.theme.palette]]
+scheme = "default"
+primary = "blue grey"
+accent = "teal"
+toggle.icon = "material/weather-night"
+toggle.name = "切换至深色模式"
+
+[[project.theme.palette]]
+scheme = "slate"
+primary = "blue grey"
+accent = "teal"
+toggle.icon = "material/weather-sunny"
+toggle.name = "切换至浅色模式"
+
+[project.markdown_extensions]
+abbr = {}
+attr_list = {}
+def_list = {}
+footnotes = {}
+md_in_html = {}
+tables = {}
+sane_lists = {}
+pymdownx.arithmatex = { generic = true }
+pymdownx.superfences = {}
+pymdownx.highlight = { anchor_linenums = true }
+toc = { permalink = true, toc_depth = 4 }

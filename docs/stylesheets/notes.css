@@ -1,0 +1,43 @@
+:root {
+  --md-text-font: "Segoe UI", "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", sans-serif;
+  --md-code-font: Consolas, "Cascadia Code", "DejaVu Sans Mono", monospace;
+  --notes-body-font-size: .78rem;
+  --notes-grid-max-width: 76rem;
+  --notes-left-sidebar-width: 13.5rem;
+  --notes-right-sidebar-width: 13.5rem;
+}
+.md-typeset { font-size: var(--notes-body-font-size); line-height: 1.78; }
+.md-typeset h1 { font-size: 1.85em; font-weight: 650; line-height: 1.35; letter-spacing: -.025em; }
+.md-typeset h2 { margin-top: 2.1em; font-size: 1.45em; font-weight: 650; }
+.md-typeset h3 { font-size: 1.15em; font-weight: 600; }
+.md-typeset blockquote { padding: .1rem .8rem; border-left: .15rem solid #5b8490; }
+.md-content, .md-content__inner { min-width: 0; }
+.md-typeset div.arithmatex { max-width: 100%; overflow-x: auto; overflow-y: hidden; padding: .25rem 0; }
+.md-typeset div.arithmatex > mjx-container { min-width: min-content; }
+.md-typeset mjx-container[jax="CHTML"][display="true"] { margin: .65em 0; }
+.md-typeset img[src*="assets/fig-"] { max-width: 100%; height: auto; background: white; border-radius: 6px; }
+.md-typeset a.note-figure { display: block; max-width: 100%; margin: 1.25em auto; cursor: zoom-in; }
+.md-typeset a.note-figure img { display: block; margin: 0 auto !important; }
+.md-typeset table:not([class]) { font-size: .78rem; }
+.course-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1.2rem; margin: 1.4rem 0 2rem; }
+.course-card { padding: 1.2rem 1.3rem; border: 1px solid var(--md-default-fg-color--lightest); border-top: 3px solid #527f8b; border-radius: 8px; }
+.course-card h3 { margin: 0 0 .8rem; }
+.course-card p:last-child { margin-bottom: 0; }
+.md-header__source { display: none; }
+.md-search { margin-left: auto; }
+@media screen and (min-width: 76.25em) {
+  .md-grid { max-width: var(--notes-grid-max-width); }
+  .md-sidebar--primary { width: var(--notes-left-sidebar-width); }
+  .md-sidebar--secondary { width: var(--notes-right-sidebar-width); }
+  .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner { margin-left: 1rem; }
+  .md-sidebar--secondary:not([hidden]) ~ .md-content > .md-content__inner { margin-right: 1rem; }
+}
+@media (max-width: 600px) {
+  .course-grid { grid-template-columns: 1fr; }
+  .md-typeset { font-size: .78rem; }
+  .md-typeset h1 { font-size: 1.7em; }
+}
+@media print {
+  .md-typeset div.arithmatex { overflow: visible; }
+  .course-card { break-inside: avoid; }
+}

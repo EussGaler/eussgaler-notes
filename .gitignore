@@ -1,0 +1,14 @@
+.venv/
+site/
+.cache/
+__pycache__/
+*.pyc
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+qa-output/
+private/
+README.md
