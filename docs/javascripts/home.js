@@ -91,7 +91,7 @@
       currentY += (targetY - currentY) * 0.055;
 
       if (backdrop && motionEnabled()) {
-        backdrop.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) scale(1.05)`;
+        backdrop.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0) scale(1.025)`;
       }
 
       if (canvas && drops.length) {
@@ -152,7 +152,7 @@
         resetPointerTarget();
         currentX = 0;
         currentY = 0;
-        if (backdrop) backdrop.style.transform = "scale(1.02)";
+        if (backdrop) backdrop.style.transform = narrowScreen.matches ? "scale(1)" : "scale(1.01)";
       }
       resizeRain();
     }

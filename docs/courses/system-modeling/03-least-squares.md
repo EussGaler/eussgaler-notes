@@ -2,15 +2,15 @@
 
 ## 五、最小二乘法辨识
 
-古典辨识：脉冲响应法、阶跃响应法、频域响应法。
+<span style="color:#c62828"><strong>古典辨识</strong></span>：脉冲响应法、阶跃响应法、频域响应法。
 
-近代辨识：最小二乘法、极大似然法。
+<span style="color:#c62828"><strong>近代辨识</strong></span>：最小二乘法、极大似然法。
 
 ### 1. 基本的最小二乘估计
 
-辨识对象：以单输入单输出系统差分方程为模型（SISO）。
+辨识对象：以<span style="color:#c62828"><strong>单输入单输出系统差分方程为模型（SISO）</strong></span>。
 
-辨识内容：系统模型参数。
+辨识内容：<span style="color:#c62828"><strong>系统模型参数</strong></span>。
 
 在模型阶次 $n$ 已知的情况下，根据系统的输入输出数据，估计差分方程的参数。
 
@@ -37,9 +37,9 @@ $$
 
 其中
 
-$$
-\xi(k)=v(k)+\sum_{i=1}^{n}a_iv(k-i).
-$$
+> $$
+> \xi(k)=v(k)+\sum_{i=1}^{n}a_iv(k-i).
+> $$
 
 当前输出：
 
@@ -48,7 +48,7 @@ y(k)=-a_1y(k-1)-\cdots-a_ny(k-n)
 +b_0u(k)+\cdots+b_nu(k-n)+\xi(k).
 $$
 
-设观测数据有 $n+N$ 个（已知 $u(1),y(1),\ldots,u(n+N),y(n+N)$），令 $k=n+1,\ldots,n+N$，有
+<span style="color:#c62828"><strong>设观测数据有 $n+N$ 个</strong></span>（已知 $u(1),y(1),\ldots,u(n+N),y(n+N)$），令 $k=n+1,\ldots,n+N$，有
 
 $$
 \begin{bmatrix}
@@ -75,7 +75,7 @@ $Y$ 为输出向量，$\Phi$ 为测量矩阵，$\theta$ 为参数向量，$\xi$ 
 
 #### （2）基本的最小二乘法（LS，Least Squares）
 
-在存在噪声 $\xi$，且数据长度 $N\gg2n+1$ 的情况下，估计参数 $\theta$。
+在存在噪声 $\xi$，且数据长度 $N\gg2n+1$ 的情况下，<span style="color:#c62828"><strong>估计参数 $\theta$</strong></span>。
 
 ① 辨识准则：残差平方和最小。
 
@@ -89,12 +89,12 @@ J=\sum_{k=n+1}^{n+N}e^2(k)
 =(Y-\Phi\hat\theta)^{\mathrm T}(Y-\Phi\hat\theta).
 $$
 
-最小二乘法即使 $J$ 最小：
+<span style="color:#c62828"><strong>最小二乘法即使 $J$ 最小：</strong></span>
 
-$$
-\hat\theta=\underset{\vartheta}{\operatorname{arg\,min}}\,
-(Y-\Phi\vartheta)^{\mathrm T}(Y-\Phi\vartheta).
-$$
+> $$
+> \hat\theta=\underset{\vartheta}{\operatorname{arg\,min}}\,
+> (Y-\Phi\vartheta)^{\mathrm T}(Y-\Phi\vartheta).
+> $$
 
 ② 估计 $\theta$：$J$ 为极值，即令 $\partial J/\partial\hat\theta=0$。
 
@@ -121,11 +121,11 @@ Y^{\mathrm T}\Phi\hat\theta
 =\hat\theta^{\mathrm T}\Phi^{\mathrm T}Y.
 $$
 
-若 $\Phi^{\mathrm T}\Phi$ 可逆，则有
+<span style="color:#c62828"><strong>若 $\Phi^{\mathrm T}\Phi$ 可逆，则有</strong></span>
 
-$$
-\hat\theta=(\Phi^{\mathrm T}\Phi)^{-1}\Phi^{\mathrm T}Y.
-$$
+> $$
+> \hat\theta=(\Phi^{\mathrm T}\Phi)^{-1}\Phi^{\mathrm T}Y.
+> $$
 
 式 $(1)$ 用到了矩阵求导。设
 
@@ -176,7 +176,7 @@ $$
 =2\Phi^{\mathrm T}\Phi\hat\theta.
 $$
 
-③ 若要求唯一的严格极小值，需 Hessian 正定。
+<span style="color:#c62828"><strong>③ 若要求唯一的严格极小值，需 Hessian 正定。</strong></span>
 
 由式 $(1)$，
 
@@ -238,9 +238,9 @@ $$
 
 若极限 $R\succ0$，则其主子矩阵 $R_u\succ0$。有限样本的 $\Phi^{\mathrm T}\Phi\succ0$ 本身不能保证极限严格正定。
 
-若 $u(k)$ 的 $(n+1)$ 阶相关矩阵 $R_u$ 为正定阵，则称 $u(k)$ 为 $(n+1)$ 阶持续激励信号。
+<span style="color:#c62828"><strong>若 $u(k)$ 的 $(n+1)$ 阶相关矩阵 $R_u$ 为正定阵，则称 $u(k)$ 为 $(n+1)$ 阶持续激励信号。</strong></span>
 
-例：白噪声序列、满足相应阶数条件的伪随机二进制噪声序列、有色噪声随机信号序列。
+例：<span style="color:#c62828"><strong>白噪声序列、满足相应阶数条件的伪随机二进制噪声序列、有色噪声随机信号序列</strong></span>。
 
 输入持续激励是辨识的重要要求，但还需结合模型结构、阶次及可辨识性条件保证整个 $R$ 正定。
 
@@ -263,10 +263,10 @@ $$
 
 得
 
-$$
-\text{LS 无偏}\quad\Longleftrightarrow\quad
-E[(\Phi^{\mathrm T}\Phi)^{-1}\Phi^{\mathrm T}\xi]=0.
-$$
+> $$
+> \text{LS 无偏}\quad\Longleftrightarrow\quad
+> E[(\Phi^{\mathrm T}\Phi)^{-1}\Phi^{\mathrm T}\xi]=0.
+> $$
 
 其中
 
@@ -341,7 +341,7 @@ $$
 \left(\frac1N\Phi^{\mathrm T}\xi\right),
 $$
 
-在 $N^{-1}\Phi^{\mathrm T}\Phi\xrightarrow{p}R\succ0$、$N^{-1}\Phi^{\mathrm T}\xi\xrightarrow{p}0$ 时，得 LS 一致。
+<span style="color:#c62828"><strong>在 $N^{-1}\Phi^{\mathrm T}\Phi\xrightarrow{p}R\succ0$、$N^{-1}\Phi^{\mathrm T}\xi\xrightarrow{p}0$ 时，得 LS 一致。</strong></span>
 
 零均值白噪声创新与外生输入配合适当的稳定性、激励及遍历条件，可保证这些极限；不能只凭噪声与输入不相关就下结论。
 
@@ -365,13 +365,13 @@ $$
 
 #### （5）基本最小二乘法的偏差
 
-由 $\xi(k)=v(k)+\sum_{i=1}^na_iv(k-i)$ 可得，$\xi(k)$ 一般为相关随机序列，并与回归量相关，故此输出观测噪声模型下的基本最小二乘法一般为有偏、不一致估计。
+由 $\xi(k)=v(k)+\sum_{i=1}^na_iv(k-i)$ 可得，$\xi(k)$ 一般为相关随机序列，并与回归量相关，故此输出观测噪声模型下的<span style="color:#c62828"><strong>基本最小二乘法一般为有偏、不一致估计</strong></span>。
 
 修正算法：广义最小二乘、辅助变量方法。使用广义最小二乘时也须处理回归量与误差相关的问题，不能只做协方差加权。
 
 ### 2. 递推最小二乘法（RLS）
 
-若 $(n+N)$ 组观测数据时的 $\hat\theta$ 已知，又得到新的观测值 $u(n+N+1)$、$y(n+N+1)$，如何用最小二乘法在线估计新的估计值 $\hat\theta$？
+若 $(n+N)$ 组观测数据时的 $\hat\theta$ 已知，又得到新的观测值 $u(n+N+1)$、$y(n+N+1)$，如何用最小二乘法<span style="color:#c62828"><strong>在线估计</strong></span>新的估计值 $\hat\theta$？
 
 #### （1）递推推导
 
@@ -476,15 +476,15 @@ $$
 (y_{N+1}-\psi_{N+1}^{\mathrm T}\hat\theta_N).
 $$
 
-#### （2）RLS 算法
+#### <span style="color:#c62828">（2）RLS 算法</span>
 
-$$
-\begin{cases}
-\hat\theta_{N+1}=\hat\theta_N+K_{N+1}(y_{N+1}-\psi_{N+1}^{\mathrm T}\hat\theta_N),\\[3pt]
-K_{N+1}=P_N\psi_{N+1}(1+\psi_{N+1}^{\mathrm T}P_N\psi_{N+1})^{-1},\\[3pt]
-P_{N+1}=P_N-P_N\psi_{N+1}(1+\psi_{N+1}^{\mathrm T}P_N\psi_{N+1})^{-1}\psi_{N+1}^{\mathrm T}P_N.
-\end{cases}
-$$
+> $$
+> \begin{cases}
+> \hat\theta_{N+1}=\hat\theta_N+K_{N+1}(y_{N+1}-\psi_{N+1}^{\mathrm T}\hat\theta_N),\\[3pt]
+> K_{N+1}=P_N\psi_{N+1}(1+\psi_{N+1}^{\mathrm T}P_N\psi_{N+1})^{-1},\\[3pt]
+> P_{N+1}=P_N-P_N\psi_{N+1}(1+\psi_{N+1}^{\mathrm T}P_N\psi_{N+1})^{-1}\psi_{N+1}^{\mathrm T}P_N.
+> \end{cases}
+> $$
 
 RLS 需获取两个初值：$\hat\theta_0$、$P_0$。
 

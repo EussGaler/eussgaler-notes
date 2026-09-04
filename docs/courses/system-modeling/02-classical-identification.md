@@ -4,7 +4,7 @@
 
 ### 1. 系统辨识的定义
 
-三个要素：数据、模型类、准则。
+<span style="color:#c62828"><strong>三个要素：数据、模型类、准则。</strong></span>
 
 辨识就是按照一个准则，在一组模型类中选择一个与数据拟合最好的模型。
 
@@ -54,11 +54,11 @@ $$
 
 与 $p_1(x,t)$ 有关：
 
-均值：
+<span style="color:#c62828"><strong>均值：</strong></span>
 
-$$
-\mu_x(t)=E[x(t)]=\int_{-\infty}^{\infty}x p_1(x,t)\,\mathrm dx.
-$$
+> $$
+> \mu_x(t)=E[x(t)]=\int_{-\infty}^{\infty}x p_1(x,t)\,\mathrm dx.
+> $$
 
 方差：
 
@@ -69,7 +69,7 @@ $$
 
 与 $p_2(x_1,x_2;t_1,t_2)$ 有关（同一过程、不同时刻）：
 
-自相关函数：
+<span style="color:#c62828"><strong>自相关函数：</strong></span>
 
 $$
 R_x(t_1,t_2)=E[x(t_1)x(t_2)]
@@ -77,7 +77,7 @@ R_x(t_1,t_2)=E[x(t_1)x(t_2)]
 x_1x_2p_2(x_1,x_2;t_1,t_2)\,\mathrm dx_1\mathrm dx_2.
 $$
 
-协方差函数：
+<span style="color:#c62828"><strong>协方差函数：</strong></span>
 
 $$
 \begin{aligned}
@@ -93,7 +93,7 @@ $$
 
 #### （2）平稳随机过程
 
-这里指宽平稳随机过程：均值不随时间改变，自相关函数只与时间间隔有关。
+<span style="color:#c62828"><strong>这里指宽平稳随机过程：均值不随时间改变，自相关函数只与时间间隔有关。</strong></span>
 
 不同时刻：
 
@@ -122,7 +122,7 @@ $$
 =\lim_{T\to\infty}\frac{1}{2T}\int_{-T}^{T}x_i(t)x_i(t+\tau)\,\mathrm dt.
 $$
 
-满足 $\bar x=\mu_x$、$\overline{x(t)x(t+\tau)}=R_x(\tau)$ 的平稳随机过程，具有均值和相关函数的各态遍历性。
+<span style="color:#c62828"><strong>满足 $\bar x=\mu_x$、$\overline{x(t)x(t+\tau)}=R_x(\tau)$ 的平稳随机过程，具有均值和相关函数的各态遍历性。</strong></span>
 
 只用持续观测一个传感器便可得到相应统计性质。
 
@@ -159,14 +159,14 @@ $$
 
 #### （1）白噪声
 
-白噪声是由一系列不相关的随机变量组成的一种理想化平稳随机过程。
+<span style="color:#c62828"><strong>白噪声是由一系列不相关的随机变量组成的一种理想化平稳随机过程。</strong></span>
 
 若连续时间随机过程 $w(t)$ 满足
 
-$$
-\mu_w=0,\qquad R_w(\tau)=\sigma^2\delta(\tau),
-\qquad\int_{-\infty}^{\infty}\delta(\tau)\,\mathrm d\tau=1,
-$$
+> $$
+> \mu_w=0,\qquad R_w(\tau)=\sigma^2\delta(\tau),
+> \qquad\int_{-\infty}^{\infty}\delta(\tau)\,\mathrm d\tau=1,
+> $$
 
 则 $w(t)$ 为零均值白噪声过程。$\delta$ 为 Dirac 冲激，$\sigma^2$ 在这里表示噪声强度。
 
@@ -180,7 +180,7 @@ $$
 
 伪随机数：计算机按照一定算法模拟产生的，结果确定、可预测。
 
-常用乘同余法：
+<span style="color:#c62828"><strong>常用乘同余法：</strong></span>
 
 ① 先产生正整数序列：
 
@@ -219,7 +219,7 @@ end
 
 正态分布函数的反函数没有初等函数形式，但可以数值计算，因而可以使用数值逆变换法。
 
-统计近似抽样法：利用中心极限定理，生成 $(0,1)$ 均匀分布的独立序列后求和。
+<span style="color:#c62828"><strong>统计近似抽样法</strong></span>：利用中心极限定理，生成 $(0,1)$ 均匀分布的独立序列后求和。
 
 $$
 x_i\sim U(0,1),\quad i=1,2,\ldots,n,\qquad
@@ -273,21 +273,21 @@ $$
 
 即
 
-$$
-R_{xy}(\tau)=\int_0^\infty g(\sigma)R_x(\tau-\sigma)\,\mathrm d\sigma,
-$$
+> $$
+> R_{xy}(\tau)=\int_0^\infty g(\sigma)R_x(\tau-\sigma)\,\mathrm d\sigma,
+> $$
 
-即维纳—霍夫方程。
+<span style="color:#c62828"><strong>即维纳—霍夫方程。</strong></span>
 
 当功率谱密度为有理函数时，可借助谱分解等方法求解；一般情形也可用数值方法求解，并非只有有理谱才可解。
 
 如 $x(t)$ 为白噪声时：
 
-$$
-R_x(\tau-\sigma)=K\delta(\tau-\sigma)
-\ \Longrightarrow\ R_{xy}(\tau)=Kg(\tau)
-\ \Longrightarrow\ g(\tau)=\frac{R_{xy}(\tau)}{K}.
-$$
+> $$
+> R_x(\tau-\sigma)=K\delta(\tau-\sigma)
+> \ \Longrightarrow\ R_{xy}(\tau)=Kg(\tau)
+> \ \Longrightarrow\ g(\tau)=\frac{R_{xy}(\tau)}{K}.
+> $$
 
 在各态遍历条件下，若 $T_m$ 足够大，有
 
@@ -309,7 +309,7 @@ $$
 
 最长线性移位寄存器序列（M 序列）易于实现，为二进制伪随机码序列。
 
-② 由 $r$ 级线性反馈移位寄存器生成，周期 $N_p=2^r-1$。
+<span style="color:#c62828"><strong>② 由 $r$ 级线性反馈移位寄存器生成，周期 $N_p=2^r-1$。</strong></span>
 
 初始寄存器不全为 $0$，反馈逻辑可适当选择。例如：
 
@@ -322,7 +322,7 @@ $$
 
 反复操作 $N_p$ 次，得到 $M=[1\ 1\ 1\ 1\ 0\ 0\ 0\ 1\ 0\ 0\ \cdots]$。
 
-③ 性质：
+<span style="color:#c62828"><strong>③ 性质：</strong></span>
 
 - 周期 $N_p$。
 - $0$ 的个数为 $(N_p-1)/2$，$1$ 的个数为 $(N_p+1)/2$。
@@ -330,13 +330,13 @@ $$
 
 将二进制序列映射为幅值 $\pm a$ 后，周期自相关函数为
 
-$$
-R_M(k)=
-\begin{cases}
-a^2,&k=0,\pm N_p,\pm2N_p,\ldots,\\
--a^2/N_p,&\text{其他整数滞后}.
-\end{cases}
-$$
+> $$
+> R_M(k)=
+> \begin{cases}
+> a^2,&k=0,\pm N_p,\pm2N_p,\ldots,\\
+> -a^2/N_p,&\text{其他整数滞后}.
+> \end{cases}
+> $$
 
 一个周期内可写为
 
@@ -385,11 +385,11 @@ $$
 
 则有
 
-$$
-\boldsymbol R_{xy}=\Delta R\boldsymbol g
-\quad\Longrightarrow\quad
-\boldsymbol g=\frac1\Delta R^{-1}\boldsymbol R_{xy}.\tag{1}
-$$
+> $$
+> \boldsymbol R_{xy}=\Delta R\boldsymbol g
+> \quad\Longrightarrow\quad
+> \boldsymbol g=\frac1\Delta R^{-1}\boldsymbol R_{xy}.\tag{1}
+> $$
 
 当输入 M 序列时，有
 
@@ -459,9 +459,9 @@ $$
 
 可将式 $(1)$ 写作
 
-$$
-g(k)=\frac{N_p}{a^2(N_p+1)\Delta}\bigl(R_{xy}(k)+c\bigr),\tag{4}
-$$
+> $$
+> g(k)=\frac{N_p}{a^2(N_p+1)\Delta}\bigl(R_{xy}(k)+c\bigr),\tag{4}
+> $$
 
 其中 $c=\sum_{k=0}^{N_p-1}R_{xy}(k)$。
 
@@ -508,19 +508,19 @@ $$
 
 离散系统方法类似。
 
-### 7. 阶跃响应法
+### <span style="color:#c62828">7. 阶跃响应法</span>
 
 一种常用的非参数模型辨识方法。
 
 测取过程的阶跃响应，由阶跃响应求过程的传递函数。
 
-常用方法：近似法、切线法、两点法、面积法、半对数法等。
+常用方法：<span style="color:#c62828"><strong>近似法、切线法、两点法、面积法</strong></span>、半对数法等。
 
 #### （1）阶跃响应曲线的实验测定
 
 输入阶跃信号一般取正常输入信号的 $5\%\sim15\%$，输入前对象须处于平衡工况。
 
-也可使用矩形脉冲输入，转换为阶跃响应曲线。
+也可使用<span style="color:#c62828"><strong>矩形脉冲输入</strong></span>，转换为阶跃响应曲线。
 
 宽为 $a$ 的矩形脉冲
 
@@ -534,7 +534,7 @@ $$
 y(t)=y^*(t)+y(t-a).
 $$
 
-#### （2）近似法
+#### <span style="color:#c62828">（2）近似法</span>
 
 以一阶系统为例：
 
@@ -552,7 +552,7 @@ $$
 
 输入阶跃量为 $x_0$，则 $K=y(\infty)/x_0$。
 
-#### （3）切线法
+#### <span style="color:#c62828">（3）切线法</span>
 
 以 $G(s)=K/(Ts+1)$ 为例，有
 
@@ -590,7 +590,7 @@ $$
 
 为例，则在响应开始点 $t=\tau^+$ 处作切线；对于高阶 S 形响应的一阶惯性加纯滞后近似，则在拐点处作切线。
 
-#### （4）两点法
+#### <span style="color:#c62828">（4）两点法</span>
 
 以 $G(s)=Ke^{-\tau s}/(1+Ts)$ 为例，单位阶跃输入下，在 $t\geq\tau$ 时，
 
@@ -606,9 +606,9 @@ $$
 
 则有 $MT-\tau=-t$。在响应曲线上取两点 $t_1,t_2$，解方程即可。
 
-#### （5）面积法
+#### <span style="color:#c62828">（5）面积法</span>
 
-实际应用时先求 $M_i$，再用 $M_i$ 来求 $A_i$。
+<span style="color:#c62828"><strong>实际应用时先求 $M_i$，再用 $M_i$ 来求 $A_i$。</strong></span>
 
 ① 对
 
@@ -637,9 +637,9 @@ $$
 a_1=c_1+b_1,\qquad a_2=c_2+b_2+b_1c_1,\qquad\cdots,
 $$
 
-$$
-a_i=c_i+b_i+\sum_{j=1}^{i-1}b_jc_{i-j}.\tag{5}
-$$
+> $$
+> a_i=c_i+b_i+\sum_{j=1}^{i-1}b_jc_{i-j}.\tag{5}
+> $$
 
 $i=1,2,\ldots,n+m$；当 $i>n$ 时 $a_i=0$，当 $i>m$ 时 $b_i=0$。
 
@@ -676,14 +676,14 @@ $$
 
 故
 
-$$
-\begin{aligned}
-A_1&=\int_0^\infty(1-h^*(t))\,\mathrm dt\\
-&=\lim_{s\to0}\mathcal L[1-h^*(t)]\\
-&=\lim_{s\to0}\frac{\sum_{i=1}^{\infty}c_is^{i-1}}
-{1+\sum_{i=1}^{\infty}c_is^i}=c_1.
-\end{aligned}
-$$
+> $$
+> \begin{aligned}
+> A_1&=\int_0^\infty(1-h^*(t))\,\mathrm dt\\
+> &=\lim_{s\to0}\mathcal L[1-h^*(t)]\\
+> &=\lim_{s\to0}\frac{\sum_{i=1}^{\infty}c_is^{i-1}}
+> {1+\sum_{i=1}^{\infty}c_is^i}=c_1.
+> \end{aligned}
+> $$
 
 再令
 
@@ -731,7 +731,7 @@ $$
 =\frac1{s(1+c_1s+\cdots+c_{i-1}s^{i-1})},
 $$
 
-相应高阶面积满足 $A_i=c_i$；其时域积分表示须以收敛为前提。
+<span style="color:#c62828"><strong>相应高阶面积满足 $A_i=c_i$</strong></span>；其时域积分表示须以收敛为前提。
 
 代回式 $(5)$，有
 
@@ -760,7 +760,7 @@ A_{n-1}&A_{n-2}&\cdots&1
 +\begin{bmatrix}A_1\\A_2\\\vdots\\A_n\end{bmatrix}.
 $$
 
-这里 $m\leq n$，$b$ 向量补零至 $n$ 维。关键在于计算 $A_i$。
+这里 $m\leq n$，$b$ 向量补零至 $n$ 维。<span style="color:#c62828"><strong>关键在于计算 $A_i$。</strong></span>
 
 ⑤ 定义 $M_i$。
 
@@ -800,10 +800,10 @@ $$
 
 因此
 
-$$
-A_1=M_0,\quad A_2=M_1+A_1M_0,\quad\ldots,
-\quad A_i=M_{i-1}+\sum_{j=0}^{i-2}A_{i-j-1}M_j.
-$$
+> $$
+> A_1=M_0,\quad A_2=M_1+A_1M_0,\quad\ldots,
+> \quad A_i=M_{i-1}+\sum_{j=0}^{i-2}A_{i-j-1}M_j.
+> $$
 
 代入 $M_i$ 表达式整理得
 

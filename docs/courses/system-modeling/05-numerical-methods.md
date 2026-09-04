@@ -1,6 +1,6 @@
 # 系统建模与仿真（五）：连续系统仿真数值方法
 
-## 七、经典的连续系统仿真建模方法学
+## <span style="color:#c62828">七、经典的连续系统仿真建模方法学</span>
 
 ### 1. 连续系统离散化原理
 
@@ -20,9 +20,9 @@ $$
 
 #### （2）仿真建模方法的三个基本要求
 
-稳定性：原系统稳定，则离散化的仿真系统也应稳定；需选择适当的数值方法与步长。
+<span style="color:#c62828"><strong>稳定性</strong></span>：原系统稳定，则离散化的仿真系统也应稳定；需选择适当的数值方法与步长。
 
-准确性：绝对误差准则
+<span style="color:#c62828"><strong>准确性</strong></span>：绝对误差准则
 
 $$
 |\hat y(t_n)-y(t_n)|\leq\delta,
@@ -36,7 +36,7 @@ $$
 
 其中 $\delta$ 为规定精度的误差量。真值接近 $0$ 时，应结合绝对误差准则。
 
-快速性：第 $n$ 步计算对应原系统时间间隔 $h_n=t_{n+1}-t_n$，计算机所需时间为 $T_n$。
+<span style="color:#c62828"><strong>快速性</strong></span>：第 $n$ 步计算对应原系统时间间隔 $h_n=t_{n+1}-t_n$，计算机所需时间为 $T_n$。
 
 - $T_n=h_n$：实时仿真。
 - $T_n<h_n$：超实时仿真，也可通过等待与实际时间同步。
@@ -48,9 +48,9 @@ $$
 
 考虑具有初值的单变量一阶常微分方程：
 
-$$
-\dot y=f(t,y),\qquad y(t_0)=y_0.
-$$
+> $$
+> \dot y=f(t,y),\qquad y(t_0)=y_0.
+> $$
 
 在 $[t_k,t_{k+1}]$ 上积分，得
 
@@ -61,26 +61,26 @@ $$
 
 即
 
-$$
-y(t_{k+1})=y(t_k)+\int_{t_k}^{t_{k+1}}f(t,y(t))\,\mathrm dt.
-$$
+> $$
+> y(t_{k+1})=y(t_k)+\int_{t_k}^{t_{k+1}}f(t,y(t))\,\mathrm dt.
+> $$
 
-定义步长 $h=t_{k+1}-t_k$，积分项 $Q_k=\int_{t_k}^{t_{k+1}}f(t,y(t))\,\mathrm dt$。以数值近似代替 $Q_k$，得到 $y_{k+1}=y_k+Q_k$ 的数值递推。
+定义步长 $h=t_{k+1}-t_k$，积分项 <span style="color:#c62828"><strong>$Q_k=\int_{t_k}^{t_{k+1}}f(t,y(t))\,\mathrm dt$</strong></span>。以数值近似代替 $Q_k$，得到 <span style="color:#c62828"><strong>$y_{k+1}=y_k+Q_k$</strong></span> 的数值递推。
 
 根据 $Q_k$ 的不同计算方法，有不同数值积分法。
 
 ① Euler 法。
 
-$$
-Q_k\approx h f(t_k,y_k),
-\qquad y_{k+1}=y_k+h f(t_k,y_k).
-$$
+> $$
+> Q_k\approx h f(t_k,y_k),
+> \qquad y_{k+1}=y_k+h f(t_k,y_k).
+> $$
 
 即近似为矩形。
 
-相当于 Taylor 展开舍去二次及以上项，故单步局部截断误差为 $O(h^2)$，全局误差为 $O(h)$。步长越小，截断误差通常越小。
+相当于 Taylor 展开舍去二次及以上项，故<span style="color:#c62828"><strong>单步局部截断误差为 $O(h^2)$，全局误差为 $O(h)$</strong></span>。步长越小，截断误差通常越小。
 
-舍入误差：由计算机有限精度产生的误差。步长越小，计算次数越多，舍入误差可能累积，故总误差并非一定随步长减小而减小。
+<span style="color:#c62828"><strong>舍入误差</strong></span>：由计算机有限精度产生的误差。步长越小，计算次数越多，舍入误差可能累积，故总误差并非一定随步长减小而减小。
 
 Euler 法用折线代替曲线，精度较低，为单步法，属于自启动模式。
 
@@ -92,18 +92,18 @@ $$
 
 由于 $y_{k+1}$ 未知，梯形法是隐式法。可用 Euler 法先预估，再校正一次，得到预估—校正法：
 
-$$
-\begin{cases}
-y_{k+1}^{(0)}=y_k+h f(t_k,y_k),&\text{预报公式},\\
-y_{k+1}=y_k+\dfrac h2\bigl(f(t_k,y_k)+f(t_{k+1},y_{k+1}^{(0)})\bigr),&\text{校正公式}.
-\end{cases}
-$$
+> $$
+> \begin{cases}
+> y_{k+1}^{(0)}=y_k+h f(t_k,y_k),&\text{预报公式},\\
+> y_{k+1}=y_k+\dfrac h2\bigl(f(t_k,y_k)+f(t_{k+1},y_{k+1}^{(0)})\bigr),&\text{校正公式}.
+> \end{cases}
+> $$
 
-该单次校正格式即显式 Heun 法，精度高于 Euler 法，每步约需两次函数计算，可以自启动。其单步局部截断误差为 $O(h^3)$，全局误差为 $O(h^2)$；它不等同于完全求解隐式梯形方程。
+该单次校正格式即显式 Heun 法，精度高于 Euler 法，每步约需两次函数计算，可以自启动。其<span style="color:#c62828"><strong>单步局部截断误差为 $O(h^3)$，全局误差为 $O(h^2)$</strong></span>；它不等同于完全求解隐式梯形方程。
 
 ### 2. 龙格—库塔法
 
-#### （1）二阶龙格—库塔法
+#### <span style="color:#c62828">（1）二阶龙格—库塔法</span>
 
 对于系统
 
@@ -154,31 +154,31 @@ $$
 
 假定 $a_1=a_2$，有 $a_1=a_2=1/2$、$b_1=b_2=1$，得到二阶龙格—库塔公式（RK2）：
 
-$$
-\begin{cases}
-y_{k+1}=y_k+\dfrac h2(K_1+K_2),\\
-K_1=f(t_k,y_k),\\
-K_2=f(t_k+h,y_k+hK_1).
-\end{cases}
-$$
+> $$
+> \begin{cases}
+> y_{k+1}=y_k+\dfrac h2(K_1+K_2),\\
+> K_1=f(t_k,y_k),\\
+> K_2=f(t_k+h,y_k+hK_1).
+> \end{cases}
+> $$
 
 其计算量与上述单次预估—校正法相同。
 
-#### （2）四阶龙格—库塔法（RK4）
+#### <span style="color:#c62828">（2）四阶龙格—库塔法（RK4）</span>
 
 同理，Taylor 展开保留到 $h^4$，可得常用的四阶龙格—库塔法：
 
-$$
-\begin{cases}
-y_{k+1}=y_k+\dfrac h6(K_1+2K_2+2K_3+K_4),\\
-K_1=f(t_k,y_k),\\
-K_2=f\left(t_k+\dfrac h2,y_k+\dfrac h2K_1\right),\\
-K_3=f\left(t_k+\dfrac h2,y_k+\dfrac h2K_2\right),\\
-K_4=f(t_k+h,y_k+hK_3).
-\end{cases}
-$$
+> $$
+> \begin{cases}
+> y_{k+1}=y_k+\dfrac h6(K_1+2K_2+2K_3+K_4),\\
+> K_1=f(t_k,y_k),\\
+> K_2=f\left(t_k+\dfrac h2,y_k+\dfrac h2K_1\right),\\
+> K_3=f\left(t_k+\dfrac h2,y_k+\dfrac h2K_2\right),\\
+> K_4=f(t_k+h,y_k+hK_3).
+> \end{cases}
+> $$
 
-RK4 的公式不唯一。其单步局部截断误差为 $O(h^5)$，全局误差为 $O(h^4)$。
+RK4 的公式不唯一。其<span style="color:#c62828"><strong>单步局部截断误差为 $O(h^5)$，全局误差为 $O(h^4)$</strong></span>。
 
 计算 $y_{k+1}$ 时只用到已有值 $y_k$，所以是单步法；不要求各步的 $h$ 固定，但在某一步的阶段计算中 $h$ 不变。
 
@@ -186,7 +186,7 @@ RK4 的公式不唯一。其单步局部截断误差为 $O(h^5)$，全局误差�
 
 ② 显式／隐式：计算 $y_{k+1}$ 时，若右端各项均可直接由已知数据求得，则为显式法（如显式 Euler、上述 RK）；否则为隐式法（如隐式梯形法）。上述 Euler 预估并校正一次的格式仍为显式法。
 
-③ 当方法和计算机确定后，在给定问题与计算区间下，仿真误差主要与步长有关。
+<span style="color:#c62828"><strong>③ 当方法和计算机确定后，在给定问题与计算区间下，仿真误差主要与步长有关。</strong></span>
 
 #### （3）龙格—库塔法的一般形式
 
@@ -208,9 +208,9 @@ $$
 
 这些为基本一致性条件；更高精度阶数还需满足相应的高阶条件。
 
-#### （4）龙格—库塔法的误差估计
+#### <span style="color:#c62828">（4）龙格—库塔法的误差估计</span>
 
-找另一个低阶的龙格—库塔公式，两个公式计算结果之差作为估计的误差。
+<span style="color:#c62828"><strong>找另一个低阶的龙格—库塔公式，两个公式计算结果之差作为估计的误差。</strong></span>
 
 ① RKM4 法。
 
@@ -279,7 +279,7 @@ $$
 
 ③ 其他方法：RKF4–5 法、RKS4 法。
 
-#### （5）步长控制
+#### <span style="color:#c62828">（5）步长控制</span>
 
 ① 加倍—减半法。
 
@@ -307,7 +307,7 @@ $$
 
 RK 法在每一步都需要求取几个点上的斜率值，计算量较大。
 
-线性多步法的核心思想为利用当前和过去多个时间步的已知函数值和导数值，来预测下一个时间步。
+<span style="color:#c62828"><strong>线性多步法的核心思想为利用当前和过去多个时间步的已知函数值和导数值，来预测下一个时间步。</strong></span>
 
 一般形式：
 
@@ -354,7 +354,7 @@ $$
 
 在新时刻有 $y_{n+k}\approx d_0$、$\dot y_{n+k}\approx-d_1/h$。
 
-② 记预报的 $d_0,d_1,\ldots,d_m$ 为 $d_0^p,d_1^p,\ldots,d_m^p$。使用全部 $k$ 个函数值和 $k$ 个导数值时取 $m=2k-1$，写作矩阵形式：
+② 记预报的 $d_0,d_1,\ldots,d_m$ 为 $d_0^p,d_1^p,\ldots,d_m^p$。使用全部 $k$ 个函数值和 $k$ 个导数值时取 <span style="color:#c62828"><strong>$m=2k-1$</strong></span>，写作矩阵形式：
 
 $$
 \begin{bmatrix}
@@ -375,7 +375,7 @@ y_{n+k-1}\\y_{n+k-2}\\\vdots\\y_n\\
 \end{bmatrix}.
 $$
 
-记为 $V^p d^p=Z^p$，则 $d^p=(V^p)^{-1}Z^p$，从而 $y_{n+k}^{p}=d_0^p$、$\dot y_{n+k}^{p}=-d_1^p/h$。
+记为 <span style="color:#c62828"><strong>$V^p d^p=Z^p$，则 $d^p=(V^p)^{-1}Z^p$</strong></span>，从而 $y_{n+k}^{p}=d_0^p$、$\dot y_{n+k}^{p}=-d_1^p/h$。
 
 ③ 由于最终计算只需 $d_0,d_1$，为简化，引入 $e_1^{\mathrm T}=[1\ 0\ \cdots\ 0]$，则
 
@@ -398,16 +398,16 @@ $$
 
 则
 
-$$
-y_{n+k}^{p}=(\phi^p)^{\mathrm T}Z^p
-=\sum_{j=1}^{k}a_j^p y_{n+k-j}-h\sum_{j=1}^{k}b_j^p\dot y_{n+k-j}.
-$$
+> $$
+> y_{n+k}^{p}=(\phi^p)^{\mathrm T}Z^p
+> =\sum_{j=1}^{k}a_j^p y_{n+k-j}-h\sum_{j=1}^{k}b_j^p\dot y_{n+k-j}.
+> $$
 
 #### （2）校正公式的推导（$\dot y_{n+k}$）
 
 记校正的系数为 $d_0^c,\ldots,d_{m_c}^c$。由于已得到 $y_{n+k}$ 的预报值，可在上一矩阵中加入该点的函数值条件。
 
-为使加入条件后的插值系统仍为方阵，校正多项式取 $m_c=2k$，并将原有各行扩展到该次数。
+为使加入条件后的插值系统仍为方阵，校正多项式取 <span style="color:#c62828"><strong>$m_c=2k$</strong></span>，并将原有各行扩展到该次数。
 
 $$
 \begin{bmatrix}
@@ -435,11 +435,11 @@ $$
 
 有 $(V^c)^{\mathrm T}\phi^c=e_2$，
 
-$$
-\dot y_{n+k}^{c}=-\frac1h(\phi^c)^{\mathrm T}Z^c
-=-\frac1h\left(\sum_{j=0}^{k}a_j^c y_{n+k-j}
--h\sum_{j=1}^{k}b_j^c\dot y_{n+k-j}\right).
-$$
+> $$
+> \dot y_{n+k}^{c}=-\frac1h(\phi^c)^{\mathrm T}Z^c
+> =-\frac1h\left(\sum_{j=0}^{k}a_j^c y_{n+k-j}
+> -h\sum_{j=1}^{k}b_j^c\dot y_{n+k-j}\right).
+> $$
 
 把新点导数与微分方程 $\dot y_{n+k}=f(t_{n+k},y_{n+k})$ 联立，可形成隐式校正方程。
 
@@ -447,10 +447,10 @@ $$
 
 预报公式和校正公式可统一为
 
-$$
-\sum_{i=0}^{k}\alpha_i y_{n+k-i}
--h\sum_{i=0}^{k}\beta_i\dot y_{n+k-i}=0.
-$$
+> $$
+> \sum_{i=0}^{k}\alpha_i y_{n+k-i}
+> -h\sum_{i=0}^{k}\beta_i\dot y_{n+k-i}=0.
+> $$
 
 - $\alpha_0=0$、$\beta_0=1$ 时，显式给出 $\dot y_{n+k}$。
 - $\alpha_0=-1$、$\beta_0=0$ 时，显式给出 $y_{n+k}$。

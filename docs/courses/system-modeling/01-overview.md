@@ -14,9 +14,9 @@
 
 #### （2）系统的三要素
 
-- 实体：具有确定意义的物体，如电机、控制阀。
-- 属性：实体具有的有效特征，如温度、速度。
-- 活动：内部活动、外部活动。
+- <span style="color:#c62828"><strong>实体</strong></span>：具有确定意义的物体，如电机、控制阀。
+- <span style="color:#c62828"><strong>属性</strong></span>：实体具有的有效特征，如温度、速度。
+- <span style="color:#c62828"><strong>活动</strong></span>：内部活动、外部活动。
 
 #### （3）系统的分类
 
@@ -28,14 +28,14 @@
 
 开环／闭环，线性／非线性。
 
-- 连续时间系统：系统状态随连续时间演化。
-- 离散时间系统：系统状态在离散时刻更新。
-- 离散事件系统（事件触发）：系统状态的变化由事件触发。
+- <span style="color:#c62828"><strong>连续时间系统</strong></span>：系统状态随连续时间演化。
+- <span style="color:#c62828"><strong>离散时间系统</strong></span>：系统状态在离散时刻更新。
+- <span style="color:#c62828"><strong>离散事件系统（事件触发）</strong></span>：系统状态的变化由事件触发。
 - 混合系统。
 
 #### （5）系统的研究方法
 
-理论分析（解析）法、实验法（黑箱）、仿真实验法（相似性原理）。
+理论分析（解析）法、实验法<span style="color:#c62828"><strong>（黑箱）</strong></span>、仿真实验法<span style="color:#c62828"><strong>（相似性原理）</strong></span>。
 
 ### 2. 系统模型
 
@@ -51,7 +51,7 @@
 
 #### （3）分类
 
-按模型形式：物理模型、数学模型、描述模型。
+按模型形式：<span style="color:#c62828"><strong>物理模型、数学模型、描述模型</strong></span>。
 
 #### （4）建模原则
 
@@ -85,7 +85,7 @@ $$
 
 ## 三、系统建模与分析
 
-主要参见《自动控制理论 A》。
+<span style="color:#c62828"><strong>主要参见《自动控制理论 A》。</strong></span>
 
 ### 1. 控制系统的数学模型
 
@@ -127,7 +127,7 @@ $$
 
 #### （3）系统辨识法（最小二乘法）
 
-三要素：数据、假设模型、准则。
+<span style="color:#c62828"><strong>三要素：数据、假设模型、准则。</strong></span>
 
 $$
 y=\theta_1x_1+\cdots+\theta_nx_n.
@@ -142,6 +142,6 @@ $$
 
 当 $X$ 满列秩时，最小二乘估计为
 
-$$
-\hat\theta=(X^{\mathrm T}X)^{-1}X^{\mathrm T}Y.
-$$
+> $$
+> \hat\theta=(X^{\mathrm T}X)^{-1}X^{\mathrm T}Y.
+> $$

@@ -10,21 +10,21 @@ $$
 \prod_{i=1}^{n}p(x_i;\theta),
 $$
 
-即事件 $X_1=x_1,\ldots,X_n=x_n$ 发生的概率为 $\prod_{i=1}^{n}p(x_i;\theta)$。记为似然函数：
+即事件 $X_1=x_1,\ldots,X_n=x_n$ 发生的概率为 $\prod_{i=1}^{n}p(x_i;\theta)$。记为<span style="color:#c62828"><strong>似然函数</strong></span>：
 
 $$
 L(\theta)=L(x_1,x_2,\ldots,x_n;\theta)
 =\prod_{i=1}^{n}p(x_i;\theta).
 $$
 
-在 $\theta$ 取值范围内，我们需要选取 $\theta=\hat\theta$，使得 $L(\hat\theta)$ 最大，即
+在 $\theta$ 取值范围内，我们需要选取 $\theta=\hat\theta$，使得 <span style="color:#c62828"><strong>$L(\hat\theta)$ 最大</strong></span>，即
 
 $$
 L(\hat\theta)=L(x_1,\ldots,x_n;\hat\theta)
 =\max_{\theta\in\Theta}L(x_1,\ldots,x_n;\theta).
 $$
 
-若极大值位于可微的内部点，可令 $\mathrm dL(\theta)/\mathrm d\theta=0$。取对数，记 $\ln L(\theta)$ 为对数似然函数，则有
+若极大值位于可微的内部点，可令 $\mathrm dL(\theta)/\mathrm d\theta=0$。取对数，记 <span style="color:#c62828"><strong>$\ln L(\theta)$ 为对数似然函数</strong></span>，则有
 
 $$
 \frac{\mathrm d\ln L(\theta)}{\mathrm d\theta}=0.
@@ -39,7 +39,7 @@ y(k)=-a_1y(k-1)-\cdots-a_ny(k-n)
 +b_0u(k)+\cdots+b_nu(k-n)+\xi(k),
 $$
 
-其中 $\xi(k)\sim N(0,\sigma^2)$ 为高斯白噪声创新。由 $Y=\Phi\theta+\xi$，得 $\xi=Y-\Phi\theta$。
+其中 <span style="color:#c62828"><strong>$\xi(k)\sim N(0,\sigma^2)$ 为高斯白噪声创新</strong></span>。由 $Y=\Phi\theta+\xi$，得 $\xi=Y-\Phi\theta$。
 
 给定初始输出与外生输入时，得条件似然函数
 
@@ -57,20 +57,20 @@ $$
 
 对 $\theta$、$\sigma^2$ 求偏导，令其为 $0$，可得
 
-$$
-\hat\theta_{\mathrm{ML}}
-=(\Phi^{\mathrm T}\Phi)^{-1}\Phi^{\mathrm T}Y,
-$$
+> $$
+> \hat\theta_{\mathrm{ML}}
+> =(\Phi^{\mathrm T}\Phi)^{-1}\Phi^{\mathrm T}Y,
+> $$
 
 过程同最小二乘估计的推导；这里假设 $\Phi$ 满列秩。
 
-$$
-\hat\sigma^2_{\mathrm{ML}}
-=\frac1N(Y-\Phi\hat\theta_{\mathrm{ML}})^{\mathrm T}
-(Y-\Phi\hat\theta_{\mathrm{ML}}).
-$$
+> $$
+> \hat\sigma^2_{\mathrm{ML}}
+> =\frac1N(Y-\Phi\hat\theta_{\mathrm{ML}})^{\mathrm T}
+> (Y-\Phi\hat\theta_{\mathrm{ML}}).
+> $$
 
-当噪声为高斯白噪声创新，且上述模型及条件似然假设成立时，$\theta$ 的条件极大似然估计与最小二乘估计等价。
+<span style="color:#c62828"><strong>当噪声为高斯白噪声创新，且上述模型及条件似然假设成立时，$\theta$ 的条件极大似然估计与最小二乘估计等价。</strong></span>
 
 ### 3. ARMAX 模型的数值解法
 
@@ -116,9 +116,9 @@ $$
 
 #### （1）一般形式的非线性最小二乘问题
 
-$$
-\min_x f(x)=\frac12\sum_{i=1}^{n}f_i^2(x)=\frac12F^{\mathrm T}(x)F(x).
-$$
+> $$
+> \min_x f(x)=\frac12\sum_{i=1}^{n}f_i^2(x)=\frac12F^{\mathrm T}(x)F(x).
+> $$
 
 其中 $x\in\mathbb R^m$ 为待优化的参数向量，$f_i(x)$ 为第 $i$ 个数据点的预测误差，为 $x$ 的非线性函数。
 
@@ -192,11 +192,11 @@ $$
 \nabla^2f(x)=J^{\mathrm T}(x)J(x)+\sum_{i=1}^{n}f_i(x)\nabla^2f_i(x).
 $$
 
-高斯—牛顿法的关键为忽略残差乘二阶导数项：
+<span style="color:#c62828"><strong>高斯—牛顿法的关键为忽略残差乘二阶导数项：</strong></span>
 
-$$
-\nabla^2f(x)\approx J^{\mathrm T}(x)J(x),
-$$
+> $$
+> \nabla^2f(x)\approx J^{\mathrm T}(x)J(x),
+> $$
 
 只用一阶导数信息。
 
@@ -235,11 +235,11 @@ $$
 x_{k+1}=x_k+\Delta x=x_k-[\nabla^2f(x_k)]^{-1}\nabla f(x_k).
 $$
 
-代入②中的近似，得到 Gauss–Newton 公式：
+<span style="color:#c62828"><strong>代入②中的近似，得到 Gauss–Newton 公式：</strong></span>
 
-$$
-x_{k+1}=x_k-[J^{\mathrm T}(x_k)J(x_k)]^{-1}J^{\mathrm T}(x_k)F(x_k).
-$$
+> $$
+> x_{k+1}=x_k-[J^{\mathrm T}(x_k)J(x_k)]^{-1}J^{\mathrm T}(x_k)F(x_k).
+> $$
 
 这里需 $J$ 满列秩；实际计算可用线搜索、阻尼或信赖域控制步长。
 
@@ -267,10 +267,10 @@ $$
 
 其中
 
-$$
-v(k)=y(k)+\sum_{i=1}^{n}\hat a_i y(k-i)
--\sum_{i=0}^{n}\hat b_i u(k-i)-\sum_{i=1}^{n}\hat c_i v(k-i).\tag{1}
-$$
+> $$
+> v(k)=y(k)+\sum_{i=1}^{n}\hat a_i y(k-i)
+> -\sum_{i=0}^{n}\hat b_i u(k-i)-\sum_{i=1}^{n}\hat c_i v(k-i).\tag{1}
+> $$
 
 将 $\sigma^2$ 的估计值代回 $\ln L$，得
 
@@ -279,11 +279,11 @@ $$
 -\frac N2\ln(2\pi).
 $$
 
-极大似然估计等价于
+<span style="color:#c62828"><strong>极大似然估计等价于</strong></span>
 
-$$
-\min_{\theta}V(\theta)=\sum_{k=n+1}^{n+N}v^2(k).
-$$
+> $$
+> \min_{\theta}V(\theta)=\sum_{k=n+1}^{n+N}v^2(k).
+> $$
 
 #### （3）Newton–Raphson 法及 Gauss–Newton 近似
 
@@ -293,9 +293,9 @@ $$
 
 ② 目标优化函数：
 
-$$
-J(\theta)=\frac12\sum_{k=n+1}^{n+N}v^2(k),\qquad v(k)=y(k)-\hat y(k).
-$$
+> $$
+> J(\theta)=\frac12\sum_{k=n+1}^{n+N}v^2(k),\qquad v(k)=y(k)-\hat y(k).
+> $$
 
 计算梯度，由式 $(1)$，
 
@@ -328,20 +328,20 @@ $$
 
 迭代：同第 3 节（1）③，得
 
-$$
-\hat\theta^{(j+1)}=\hat\theta^{(j)}
--\left[H(\theta)^{-1}\nabla J(\theta)\right]_{\theta=\hat\theta^{(j)}},
-$$
+> $$
+> \hat\theta^{(j+1)}=\hat\theta^{(j)}
+> -\left[H(\theta)^{-1}\nabla J(\theta)\right]_{\theta=\hat\theta^{(j)}},
+> $$
 
 得到新的估计值 $\hat\theta^{(j+1)}$。
 
 直至残差方差的相对变化小于某个数，并结合梯度、参数变化等停止条件。所得 $\hat\theta$ 为条件极大似然问题的数值候选解；非线性迭代可能停在局部极小点，不保证全局最优。
 
-### 4. 递推极大似然估计（RML）
+### <span style="color:#c62828">4. 递推极大似然估计（RML）</span>
 
 #### （1）在线辨识
 
-每观测一次数据，就递推计算一次参数估计值的在线辨识算法。
+<span style="color:#c62828"><strong>每观测一次数据，就递推计算一次参数估计值的在线辨识算法。</strong></span>
 
 设系统为 ARMAX 模型：
 
@@ -490,7 +490,7 @@ $$
 
 取 $\tilde\theta_{k-1}|_{\theta=\hat\theta_k}=r_k=G_k\hat v_k$，得到 $J_k^*(\theta)$ 的二次近似的最小值。
 
-#### （3）RML 算法
+#### <span style="color:#c62828">（3）RML 算法</span>
 
 $$
 \hat v_k=y_k-\varphi_k^{\mathrm T}\hat\theta_{k-1},
@@ -504,11 +504,11 @@ $$
 
 $y_k^{(f)}$、$u_k^{(f)}$、$\hat v_k^{(f)}$、$\varphi_k^{(f)}$ 的定义如（2）②所示。
 
-$$
-\begin{cases}
-\hat\theta_k=\hat\theta_{k-1}+G_k\hat v_k,\\[3pt]
-G_k=P_{k-1}\varphi_k^{(f)}
-\left(1+\varphi_k^{(f)\mathrm T}P_{k-1}\varphi_k^{(f)}\right)^{-1},\\[3pt]
-P_k=(I-G_k\varphi_k^{(f)\mathrm T})P_{k-1}.
-\end{cases}
-$$
+> $$
+> \begin{cases}
+> \hat\theta_k=\hat\theta_{k-1}+G_k\hat v_k,\\[3pt]
+> G_k=P_{k-1}\varphi_k^{(f)}
+> \left(1+\varphi_k^{(f)\mathrm T}P_{k-1}\varphi_k^{(f)}\right)^{-1},\\[3pt]
+> P_k=(I-G_k\varphi_k^{(f)\mathrm T})P_{k-1}.
+> \end{cases}
+> $$
