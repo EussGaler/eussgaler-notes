@@ -14,6 +14,12 @@
 
 [查看笔记](system-modeling/index.md)
 
+## 自动控制理论 A
+
+大三上/2025秋
+
+[查看笔记](automatic-control-a/index.md)
+
 ## 自动控制理论 B
 
 大三下/2026春

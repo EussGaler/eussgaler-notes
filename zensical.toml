@@ -27,6 +27,17 @@ nav = [
       { "05 · 连续系统仿真数值方法" = "courses/system-modeling/05-numerical-methods.md" },
       { "06 · 一级倒立摆建模与 LQR 控制" = "courses/system-modeling/06-pendulum-lqr.md" },
     ] },
+    { "自动控制理论 A" = [
+      "courses/automatic-control-a/index.md",
+      { "01 · 状态空间模型" = "courses/automatic-control-a/01-状态空间模型.md" },
+      { "02 · 线性离散系统数学模型" = "courses/automatic-control-a/02-线性离散系统数学模型.md" },
+      { "03 · 脉冲传递函数时域分析" = "courses/automatic-control-a/03-脉冲传递函数时域分析.md" },
+      { "04 · 基于状态空间的时域分析" = "courses/automatic-control-a/04-基于状态空间的时域分析.md" },
+      { "05 · 基于传递函数的稳定性分析" = "courses/automatic-control-a/05-基于传递函数的稳定性分析.md" },
+      { "06 · 控制系统的稳态误差分析" = "courses/automatic-control-a/06-控制系统的稳态误差分析.md" },
+      { "07 · 系统的运动稳定性" = "courses/automatic-control-a/07-系统的运动稳定性.md" },
+      { "08 · 控制系统的稳定裕度" = "courses/automatic-control-a/08-控制系统的稳定裕度.md" },
+    ] },
     { "自动控制理论 B" = [
       "courses/automatic-control-b/index.md",
       { "01 · 控制系统的性能指标" = "courses/automatic-control-b/01-控制系统的性能指标.md" },
