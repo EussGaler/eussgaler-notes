@@ -134,16 +134,6 @@ html:not(.has-home-page) body[data-md-color-scheme="default"] .md-main__inner {
   will-change: transform;
 }
 
-.home-backdrop::before {
-  position: absolute;
-  inset: 22px;
-  content: "";
-  background-image: linear-gradient(rgba(7, 17, 17, .04), rgba(7, 17, 17, .12)), url("../assets/home/home-background.webp");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 .home-backdrop::after {
   position: absolute;
   inset: 0;
@@ -399,11 +389,6 @@ html:not(.has-home-page) body[data-md-color-scheme="default"] .md-main__inner {
     inset: 0;
     background-position: center;
     transform: scale(1);
-  }
-
-  .home-backdrop::before {
-    inset: 0;
-    background-size: cover;
   }
 
   .home-rain {

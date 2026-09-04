@@ -18,4 +18,4 @@
 
 大三下/2026春
 
-[查看笔记](automatic-control-b/00-目录.md)
+[查看笔记](automatic-control-b/index.md)

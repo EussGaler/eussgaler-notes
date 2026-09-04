@@ -28,7 +28,7 @@ nav = [
       { "06 · 一级倒立摆建模与 LQR 控制" = "courses/system-modeling/06-pendulum-lqr.md" },
     ] },
     { "自动控制理论 B" = [
-      "courses/automatic-control-b/00-目录.md",
+      "courses/automatic-control-b/index.md",
       { "01 · 控制系统的性能指标" = "courses/automatic-control-b/01-控制系统的性能指标.md" },
       { "02 · 基于频率特性的校正" = "courses/automatic-control-b/02-基于频率特性的校正.md" },
       { "03 · 基于根轨迹的校正" = "courses/automatic-control-b/03-基于根轨迹的校正.md" },
