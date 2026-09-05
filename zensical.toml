@@ -12,11 +12,27 @@ nav = [
   { "首页" = "index.md" },
   { "课程笔记" = [
     "courses/index.md",
+    { "信号分析与处理" = [
+      "courses/signal-analysis/index.md",
+      { "01 · 绪论" = "courses/signal-analysis/01-绪论.md" },
+      { "02 · 连续信号的分析" = "courses/signal-analysis/02-连续信号的分析.md" },
+      { "03 · 离散信号的分析" = "courses/signal-analysis/03-离散信号的分析.md" },
+      { "04 · 信号处理基础" = "courses/signal-analysis/04-信号处理基础.md" },
+      { "05 · 滤波器" = "courses/signal-analysis/05-滤波器.md" },
+      { "06 · 常用变换公式汇总" = "courses/signal-analysis/06-常用变换公式汇总.md" },
+    ] },
     { "控制理论中的代数基础" = [
       "courses/algebra-for-control/index.md",
       { "01 · 线性代数基础" = "courses/algebra-for-control/01-linear-algebra.md" },
       { "02 · 线性变换与商空间" = "courses/algebra-for-control/02-linear-maps.md" },
       { "03 · 内积空间与正交投影" = "courses/algebra-for-control/03-inner-products.md" },
+    ] },
+    { "系统与控制" = [
+      "courses/systems-and-control/index.md",
+      { "01 · 控制系统的数学模型" = "courses/systems-and-control/01-控制系统的数学模型.md" },
+      { "02 · 控制系统的时域分析" = "courses/systems-and-control/02-控制系统的时域分析.md" },
+      { "03 · 控制系统的稳定性及稳态误差" = "courses/systems-and-control/03-控制系统的稳定性及稳态误差.md" },
+      { "04 · 线性系统的频域分析方法" = "courses/systems-and-control/04-线性系统的频域分析方法.md" },
     ] },
     { "系统建模与仿真" = [
       "courses/system-modeling/index.md",

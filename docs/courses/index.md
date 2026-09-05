@@ -2,11 +2,23 @@
 
 根据手写笔记整理，很可能存在细节错误
 
+## 信号分析与处理
+
+大二下/2025春
+
+[查看笔记](signal-analysis/index.md)
+
 ## 控制理论中的代数基础
 
 大二下/2025春
 
 [查看笔记](algebra-for-control/index.md)
+
+## 系统与控制
+
+大二下/2025春
+
+[查看笔记](systems-and-control/index.md)
 
 ## 系统建模与仿真
 
