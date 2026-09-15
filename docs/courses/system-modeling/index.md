@@ -8,3 +8,7 @@
 4. [极大似然辨识](04-maximum-likelihood.md)
 5. [连续系统仿真数值方法](05-numerical-methods.md)
 6. [一级倒立摆建模与 LQR 控制](06-pendulum-lqr.md)
+
+施工中
+
+根据李芃、李衍杰老师课件整理

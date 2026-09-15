@@ -1,14 +1,37 @@
 (() => {
   const phrases = [
     "我们的头脑比天空更辽阔。",
-    "在大海中生存的鱼，不知晓陆上的世界。",
-    "如若它们拥有智慧，也终将因此灭亡。",
-    "拥有智慧之人才是最为愚蠢者。",
+    "在大海中生存的鱼，不知晓陆上的世界。如若它们拥有智慧，也终将因此灭亡。拥有智慧之人才是最为愚蠢者。",
+    "复仇是一场愚蠢的游戏。",
     "那是一个什么都没有，同时什么也不缺的世界。",
     "祈祷就是思考人生的意义。",
     "如果命运是一张蛛网，独立与自由就像蛛网上的蛛丝那般有迹可循。",
     "我们就像蝴蝶，翩翩起舞一天，却以为白昼即永恒。",
-    "丰沛真诚的爱是一种粘稠的毒药。"
+    "停止的时间又再次流动，我们会在绝无交汇的路上走下去。",
+    "“把这些都统统忘掉，去过和别人一样的生活，但也不要被埋没了，坚强地活下去吧。”",
+    "“‘自己和其他人不一样’虽然经常会有人这么说，但几乎都是错觉。大家是连这件事都察觉不到的情弱。”",
+    "踏上舞台吧。",
+    "小时候，我以为世界更加单纯一点。没有赢不了的游戏，努力就会有回报。",
+    "我们总会在今天的十字路口上陷入迷茫，无法径直去往明天。",
+    "半吊子的诗篇或许会令人感到不快，但没人会嘲笑作者想要表达些什么的愿望。",
+    "丰沛真诚的爱是一种粘稠的毒药。",
+    "当一个灵魂深陷在虔信中，它逐渐就失去对现实的意义、趣味、需要与爱好。",
+    "每一殷勤，每一矫饰，都期许着一条皱纹。",
+    "生命进程等于记忆进程，多多记录能让自己更加长寿。",
+    "只要能够活着，那就活下去吧。不要把活下去这件事想成是辛苦、可耻的。只要能活下去，就一定会遇到好事的。",
+    "连抛下故乡的理由都搞不清，却爱上旅行的目的地，这并非正经人士能做到的事。",
+    "有人全盘接受一切，实际上却什么都没得到；有人看似放弃了一切，实际上却没失去任何东西。",
+    "后悔不是因为觉得而存在，而是为了消除而存在的。",
+    "如果只属于今天的景色，能在回忆中永远美丽下去。留存至今的几处悔恨，与如群星般闪耀的日子，今后还会有吗？",
+    "丢掉的感情如何不是消失着的秋色？",
+    "思考人生或许没意义，但不思考连人生都没有。",
+    "信而不见的人是有福的。",
+    "我们的情人不过是随便借个名字，用幻想吹出来的肥皂泡。",
+    "通往地狱的道路是由善意铺满的。通往地狱的道路是由希望构成的。",
+    "绝望是给予沉溺在幸福之中的人类的特权。",
+    "旷野和干旱之地必然欢喜，沙漠也必快乐，又像玫瑰盛开。",
+    "有祈祷的话，也会有诅咒。",
+    "故事与梦想，其本身一定就是意义所在。",
   ];
 
   function initHome() {
@@ -29,7 +52,13 @@
     let currentX = 0;
     let currentY = 0;
     let frame = 0;
-    let phraseIndex = 0;
+    let phraseIndex = -1;
+    let phraseQueue = [];
+    let phraseTransition = 0;
+    let remaining = 0;
+    let deadline = 0;
+    let hovered = false;
+    let paused = false;
     let phraseTimer = 0;
     let drops = [];
     let viewportWidth = window.innerWidth;
@@ -137,15 +166,72 @@
       frame = window.requestAnimationFrame(render);
     }
 
-    function rotatePhrase() {
-      if (!rotatingText || reduceMotion.matches) return;
-      rotatingText.classList.add("is-changing");
-      window.setTimeout(() => {
-        phraseIndex = (phraseIndex + 1) % phrases.length;
+    function refillPhrases() {
+      phraseQueue = phrases.map((_, i) => i);
+      for (let i = phraseQueue.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [phraseQueue[i], phraseQueue[j]] = [phraseQueue[j], phraseQueue[i]];
+      }
+      if (phraseQueue.length > 1 && phraseQueue[0] === phraseIndex) {
+        [phraseQueue[0], phraseQueue[1]] = [phraseQueue[1], phraseQueue[0]];
+      }
+    }
+
+    function stopPhraseTimer() {
+      if (phraseTimer) remaining = Math.max(0, deadline - performance.now());
+      window.clearTimeout(phraseTimer);
+      phraseTimer = 0;
+    }
+
+    function schedulePhrase() {
+      stopPhraseTimer();
+      if (document.hidden || paused || hovered || phraseTransition || !rotatingText || phrases.length < 2) return;
+      deadline = performance.now() + remaining;
+      phraseTimer = window.setTimeout(() => { phraseTimer = 0; rotatePhrase(); }, remaining);
+    }
+
+    function rotatePhrase(initial = false) {
+      if (!rotatingText || !phrases.length) return;
+      stopPhraseTimer();
+      window.clearTimeout(phraseTransition);
+      phraseTransition = 0;
+      if (!phraseQueue.length) refillPhrases();
+      phraseIndex = phraseQueue.shift();
+      const display = () => {
+        phraseTransition = 0;
         rotatingText.textContent = phrases[phraseIndex];
         rotatingText.classList.remove("is-changing");
-      }, 220);
+        remaining = 2500 + Array.from(phrases[phraseIndex]).length * 70;
+        schedulePhrase();
+      };
+      if (initial || reduceMotion.matches) display();
+      else {
+        rotatingText.classList.add("is-changing");
+        phraseTransition = window.setTimeout(display, 220);
+      }
     }
+
+    function togglePhrasePause() {
+      paused = !paused;
+      rotatingText.setAttribute("aria-pressed", String(paused));
+      schedulePhrase();
+    }
+
+    rotatingText?.addEventListener("pointerenter", (event) => {
+      if (event.pointerType !== "mouse") return;
+      hovered = true;
+      schedulePhrase();
+    });
+    rotatingText?.addEventListener("pointerleave", () => { hovered = false; schedulePhrase(); });
+    rotatingText?.addEventListener("click", togglePhrasePause);
+    rotatingText?.addEventListener("keydown", (event) => {
+      if (event.key === " " || event.key === "Enter") {
+        event.preventDefault();
+        togglePhrasePause();
+      }
+    });
+    document.querySelector(".home-phrase-next")?.addEventListener("click", () => rotatePhrase());
+    document.addEventListener("visibilitychange", schedulePhrase);
 
     function handleMotionPreference() {
       if (!motionEnabled()) {
@@ -165,12 +251,18 @@
     narrowScreen.addEventListener("change", handleMotionPreference);
 
     resizeRain();
-    phraseTimer = window.setInterval(rotatePhrase, 5200);
+    rotatePhrase(true);
     restartAnimation();
+
+    window.addEventListener("pageshow", (event) => {
+      if (event.persisted) { rotatingText.textContent = phrases[phraseIndex]; rotatingText.classList.remove("is-changing"); schedulePhrase(); restartAnimation(); }
+    });
 
     window.addEventListener("pagehide", () => {
       window.cancelAnimationFrame(frame);
-      window.clearInterval(phraseTimer);
+      stopPhraseTimer();
+      window.clearTimeout(phraseTransition);
+      phraseTransition = 0;
     }, { once: true });
   }
 

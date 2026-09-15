@@ -335,23 +335,112 @@ html:not(.has-home-page) body[data-md-color-scheme="default"] .md-main__inner {
     var(--home-glass-strong);
 }
 
-.home-aside__dot {
-  width: .52rem;
-  height: .52rem;
-  flex: 0 0 auto;
-  background: #b8d2c0;
-  border-radius: 50%;
-  box-shadow: 0 0 0 .35rem rgba(184, 210, 192, .12), 0 0 18px rgba(184, 210, 192, .34);
-}
-
 .home-rotating-text {
   margin: 0;
-  transition: opacity 220ms ease, transform 220ms ease;
+  min-width: 0;
+  font-family: "STZhongsong", "华文中宋", "STKaiti", "华文楷体", "KaiTi", "楷体", "Noto Serif CJK SC", "Songti SC", serif;
+  font-weight: 400;
+  line-height: 1.85;
+  letter-spacing: .04em;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  transition: opacity 220ms ease;
 }
 
 .home-rotating-text.is-changing {
   opacity: 0;
-  transform: translateY(.35rem);
+}
+
+.home-shell { align-content: start; }
+.home-glass--aside { align-items: flex-start; }
+.home-aside__controls {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  padding-top: .17rem;
+}
+.home-phrase-next {
+  display: grid;
+  place-items: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 1px solid rgba(230,245,233,.48);
+  border-radius: 50%;
+  background: #b8d2c0;
+  color: #fff;
+  box-shadow: 0 0 0 .2rem rgba(184,210,192,.1);
+  transition: background-color 160ms ease, box-shadow 160ms ease;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.home-phrase-next svg {
+  display: block;
+  width: .9rem;
+  height: .9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.home-phrase-next:hover { background: #cee3d3; box-shadow: 0 0 0 .25rem rgba(184,210,192,.16); }
+.home-phrase-next:focus-visible,
+.home-rotating-text:focus-visible { outline: 2px solid #c9e7eb; outline-offset: 4px; }
+.home-tech-note a { color: var(--home-text); text-decoration: underline; text-underline-offset: .2em; }
+
+.has-home-page body[data-md-color-scheme="default"] .md-search__button,
+.has-home-page body[data-md-color-scheme="default"] .md-search__form {
+  color: #f5f5e9;
+  background: rgba(20,35,35,.85);
+}
+.has-home-page body[data-md-color-scheme="slate"] .md-search__button,
+.has-home-page body[data-md-color-scheme="slate"] .md-search__form {
+  color: #172524;
+  background: rgba(244,247,234,.9);
+}
+.has-home-page body[data-md-color-scheme="default"] .md-search__input,
+.has-home-page body[data-md-color-scheme="default"] .md-search__input::placeholder,
+.has-home-page body[data-md-color-scheme="default"] .md-search__icon,
+.has-home-page body[data-md-color-scheme="default"] .md-search__options { color: #f5f5e9; }
+.has-home-page body[data-md-color-scheme="default"] .md-search__options kbd { color: #f5f5e9; background: rgba(128,128,128,.16); }
+.has-home-page .md-search__button kbd { color: inherit; background: rgba(128,128,128,.16); }
+
+/* The modern theme draws both the magnifier and shortcut as pseudo-elements. */
+.has-home-page body[data-md-color-scheme="default"] {
+  --home-search-bg: #203331;
+  --home-search-fg: #f3f5ec;
+  --home-search-hover: #2b423e;
+  --home-search-key-bg: #384d47;
+  --home-search-key-fg: #edf2e8;
+  --home-search-border: #53685c;
+}
+.has-home-page body[data-md-color-scheme="slate"] {
+  --home-search-bg: #e2e7d9;
+  --home-search-fg: #263b32;
+  --home-search-hover: #edf0e6;
+  --home-search-key-bg: #cbd5c4;
+  --home-search-key-fg: #304638;
+  --home-search-border: #b7c5af;
+}
+.has-home-page body[data-md-color-scheme] .md-search__button {
+  transition: none;
+  color: var(--home-search-fg);
+  background: var(--home-search-bg);
+  box-shadow: inset 0 0 0 1px var(--home-search-border);
+}
+.has-home-page body[data-md-color-scheme] .md-search__button:hover,
+.has-home-page body[data-md-color-scheme] .md-search__button:focus-visible {
+  color: var(--home-search-fg);
+  background: var(--home-search-hover);
+}
+.has-home-page body .md-search__button:before { background-color: var(--home-search-fg); }
+.has-home-page body .md-search__button:after {
+  color: var(--home-search-key-fg);
+  background: var(--home-search-key-bg);
+  font-weight: 500;
 }
 
 @media screen and (min-width: 60em) {

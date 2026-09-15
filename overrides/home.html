@@ -29,13 +29,10 @@
       </div>
     </section>
 
-    <aside class="home-glass home-glass--aside" aria-label="随记">
-      <span class="home-aside__dot" aria-hidden="true"></span>
-      <p class="home-rotating-text" aria-live="polite">我们的头脑比天空更辽阔。</p>
-    </aside>
+
 
     <section class="home-glass home-glass--links" aria-labelledby="home-links-title">
-      <p class="home-tech-note">本站使用 Zensical 构建，并通过 GitHub Pages 持续部署。</p>
+      <p class="home-tech-note">本站使用 Zensical 构建，并通过 GitHub Pages 持续部署。 <a href="https://github.com/EussGaler/eussgaler-notes" target="_blank" rel="noopener noreferrer">项目地址</a></p>
       <h2 id="home-links-title" class="home-section-title home-section-title--links">友情链接</h2>
       <nav class="home-socials" aria-label="个人主页">
         <a class="home-social" href="https://github.com/EussGaler" target="_blank" rel="noopener noreferrer">
@@ -54,6 +51,14 @@
         </a>
       </nav>
     </section>
+    <aside class="home-glass home-glass--aside" aria-label="随记">
+      <div class="home-aside__controls">
+        <button class="home-phrase-next" type="button" aria-label="下一条" title="下一条">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14m-6-6 6 6-6 6"/></svg>
+        </button>
+      </div>
+      <p class="home-rotating-text" aria-live="off" tabindex="0" role="button" aria-label="格言，点击暂停或继续播放" aria-pressed="false">我们的头脑比天空更辽阔。</p>
+    </aside>
   </div>
 {% endblock %}
 

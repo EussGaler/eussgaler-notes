@@ -1,6 +1,6 @@
 [project]
 site_name = "EussGaler's Notes"
-site_description = "控制、建模与数学基础的课程笔记"
+site_description = "收集日常的碎片"
 site_author = "EussGaler"
 site_url = "https://eussgaler.github.io/eussgaler-notes/"
 docs_dir = "docs"
