@@ -32,6 +32,7 @@
     "旷野和干旱之地必然欢喜，沙漠也必快乐，又像玫瑰盛开。",
     "有祈祷的话，也会有诅咒。",
     "故事与梦想，其本身一定就是意义所在。",
+    "我们不是背负起罪恶再去选择相应的道路，而是应该在选择好的道路上背负起相应的罪恶。"
   ];
 
   function initHome() {
@@ -177,6 +178,39 @@
       }
     }
 
+    const phraseStorageKey = "eussgaler.home.phrase-progress.v1";
+    const phraseSignature = JSON.stringify(phrases);
+
+    function savePhraseProgress() {
+      try {
+        window.sessionStorage.setItem(phraseStorageKey, JSON.stringify({
+          signature: phraseSignature, current: phraseIndex, queue: phraseQueue
+        }));
+      } catch (_) { /* Storage may be disabled; the in-page queue still works. */ }
+    }
+
+    function restorePhraseProgress() {
+      try {
+        const saved = JSON.parse(window.sessionStorage.getItem(phraseStorageKey));
+        const validIndex = i => Number.isInteger(i) && i >= 0 && i < phrases.length;
+        if (!saved || saved.signature !== phraseSignature || !validIndex(saved.current) ||
+            !Array.isArray(saved.queue) || !saved.queue.every(validIndex) ||
+            saved.queue.includes(saved.current) ||
+            new Set(saved.queue).size !== saved.queue.length) return false;
+        phraseIndex = saved.current;
+        phraseQueue = saved.queue.slice();
+        return true;
+      } catch (_) { return false; }
+    }
+
+    function displayPhrase() {
+      rotatingText.textContent = phrases[phraseIndex];
+      rotatingText.classList.remove("is-changing");
+      remaining = 2500 + Array.from(phrases[phraseIndex]).length * 70;
+      savePhraseProgress();
+      schedulePhrase();
+    }
+
     function stopPhraseTimer() {
       if (phraseTimer) remaining = Math.max(0, deadline - performance.now());
       window.clearTimeout(phraseTimer);
@@ -191,18 +225,14 @@
     }
 
     function rotatePhrase(initial = false) {
-      if (!rotatingText || !phrases.length) return;
+      if (!rotatingText || !phrases.length || phraseTransition) return;
       stopPhraseTimer();
-      window.clearTimeout(phraseTransition);
-      phraseTransition = 0;
-      if (!phraseQueue.length) refillPhrases();
-      phraseIndex = phraseQueue.shift();
       const display = () => {
         phraseTransition = 0;
-        rotatingText.textContent = phrases[phraseIndex];
-        rotatingText.classList.remove("is-changing");
-        remaining = 2500 + Array.from(phrases[phraseIndex]).length * 70;
-        schedulePhrase();
+        // Consume only when actually displayed, never on an interrupted fade.
+        if (!phraseQueue.length) refillPhrases();
+        phraseIndex = phraseQueue.shift();
+        displayPhrase();
       };
       if (initial || reduceMotion.matches) display();
       else {
@@ -251,7 +281,8 @@
     narrowScreen.addEventListener("change", handleMotionPreference);
 
     resizeRain();
-    rotatePhrase(true);
+    if (rotatingText && restorePhraseProgress()) displayPhrase();
+    else rotatePhrase(true);
     restartAnimation();
 
     window.addEventListener("pageshow", (event) => {
@@ -263,7 +294,7 @@
       stopPhraseTimer();
       window.clearTimeout(phraseTransition);
       phraseTransition = 0;
-    }, { once: true });
+    });
   }
 
   if (document.readyState === "loading") {
