@@ -12,12 +12,10 @@
 
 - $M$：小车质量。
 - $m$：摆杆质量。
-- $b$：小车黏性摩擦系数。
+- $b$：小车摩擦系数。
 - $l$：摆杆转动轴心到杆质心的长度。
-- $J$：摆杆绕自身质心的转动惯量。
-- $F$、$x$、$\theta$ 如图所示：$F$、$x$ 向右为正，$\theta$ 从竖直向上方向顺时针为正。
-
-$F_x$、$F_y$ 为小车作用于摆杆的水平、竖直作用力；小车受到相反的反作用力。
+- $J$：摆杆转动惯量。
+- $F$、$x$、$\theta$ 如图所示。
 
 则有：
 
@@ -56,7 +54,7 @@ $$
 (J+ml^2)\ddot\theta-mgl\sin\theta=-ml\ddot x\cos\theta.
 $$
 
-在直立平衡点附近作一阶线性化：$\cos\theta\approx1$、$\sin\theta\approx\theta$，忽略二阶及以上小量。这里不将 $\dot\theta$ 直接置零。
+由于 $\theta$ 很小，作近似处理：$\dot\theta^2\approx0$、$\cos\theta\approx1$、$\sin\theta\approx\theta$。
 
 取 $u=F$，得
 
@@ -83,24 +81,18 @@ $$
 \end{cases}
 $$
 
-记
-
-$$
-D=J(M+m)+Mml^2,
-$$
-
 得
 
 $$
 A=\begin{bmatrix}
 0&1&0&0\\[2pt]
-\dfrac{mgl(M+m)}D&0&0&\dfrac{mlb}D\\[6pt]
+\dfrac{mgl(M+m)}{J(M+m)+Mml^2}&0&0&0\\[6pt]
 0&0&0&1\\[2pt]
--\dfrac{m^2gl^2}D&0&0&-\dfrac{b(J+ml^2)}D
+-\dfrac{m^2gl^2}{J(M+m)+Mml^2}&0&0&0
 \end{bmatrix},
 \qquad
 B=\begin{bmatrix}
-0\\[2pt]-\dfrac{ml}D\\[6pt]0\\[2pt]\dfrac{J+ml^2}D
+0\\[2pt]-\dfrac{ml}{J(M+m)+Mml^2}\\[6pt]0\\[2pt]\dfrac{J+ml^2}{J(M+m)+Mml^2}
 \end{bmatrix},
 $$
 
